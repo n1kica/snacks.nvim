@@ -366,9 +366,9 @@ function M.diff(ctx)
 end
 
 ---@param ctx snacks.picker.preview.ctx
-function M.git_diff(ctx)
+function M.git_diff(target, ctx)
   local builtin = ctx.picker.opts.previewers.git.builtin
-  local cmd = git(ctx, "diff", "HEAD")
+  local cmd = git(ctx, "diff", target or "HEAD")
   if ctx.item.file then
     vim.list_extend(cmd, { "--", ctx.item.file })
   end
