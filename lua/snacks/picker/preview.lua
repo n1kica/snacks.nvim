@@ -375,6 +375,7 @@ function M.git_diff(ctx)
   if builtin then
     table.insert(cmd, 2, "--no-pager")
   end
+  print(cmd)
   M.cmd(cmd, ctx, { ft = builtin and "diff develop" or nil })
 end
 
