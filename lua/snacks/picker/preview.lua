@@ -368,14 +368,14 @@ end
 ---@param ctx snacks.picker.preview.ctx
 function M.git_diff(ctx)
   local builtin = ctx.picker.opts.previewers.git.builtin
-  local cmd = git(ctx, "diff", "develop")
+  local cmd = git(ctx, "diff", "HEAD")
   if ctx.item.file then
     vim.list_extend(cmd, { "--", ctx.item.file })
   end
   if builtin then
     table.insert(cmd, 2, "--no-pager")
   end
-  M.cmd(cmd, ctx, { ft = builtin and "diff" or nil })
+  M.cmd(cmd, ctx, { ft = builtin and "diff develop" or nil })
 end
 
 ---@param ctx snacks.picker.preview.ctx
